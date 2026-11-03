@@ -48,11 +48,13 @@ Landing and foundation are unchanged and out of scope for this repo; they are co
 
 | Document | Purpose |
 |---|---|
-| [`docs/design/omop-l3-design.html`](docs/design/omop-l3-design.html) | **Start here.** Self-contained visual walkthrough for discussion with the lead: concepts, patient example, value, risks, plan. Open in a browser. |
-| [`docs/design/architecture.md`](docs/design/architecture.md) | Diagrams (Mermaid): layer position, refresh flow, person-centric model, schemas |
-| [`docs/design/mapping-matrix.md`](docs/design/mapping-matrix.md) | FHIR R4 resource → OMOP table mapping, coverage and known gaps; first slice marked |
-| [`docs/design/benchmark-questions.md`](docs/design/benchmark-questions.md) | Question set to prove value: AI accuracy on FHIR foundation vs OMOP |
-| [`docs/design/open-questions.md`](docs/design/open-questions.md) | Decisions and inputs still needed, with prerequisites and phased plan |
+| [`docs/design/omop-l3-design.html`](docs/design/omop-l3-design.html) | **Start here, and present from this.** One self-contained page (open in a browser, works offline, light/dark, printable) covering summary, problem, OMOP concepts, patient example, FHIR vs OMOP queries, architecture diagrams, a filterable mapping matrix, advantages, risks, benchmark, plan, decisions and glossary. |
+| [`docs/design/architecture.md`](docs/design/architecture.md) | Architecture as Mermaid diagrams (renders on GitHub) |
+| [`docs/design/mapping-matrix.md`](docs/design/mapping-matrix.md) | Mapping matrix in plain text, for review and diffs |
+| [`docs/design/benchmark-questions.md`](docs/design/benchmark-questions.md) | Benchmark questions and scoring template |
+| [`docs/design/open-questions.md`](docs/design/open-questions.md) | Decisions, open questions, prerequisites and phased plan in plain text |
+
+The Markdown files mirror content that is also in the HTML page; if they diverge, treat the HTML as the current version.
 
 ## Sources
 

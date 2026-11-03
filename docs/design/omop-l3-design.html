@@ -8,39 +8,56 @@
   :root{
     --bg:#f7f8fa; --card:#ffffff; --ink:#1b2430; --muted:#5b6675; --line:#dde2ea;
     --accent:#1f6feb; --accent-soft:#e6f0ff; --good:#1a7f4b; --good-soft:#e3f5ec;
-    --warn:#b25e09; --warn-soft:#fdf0dc; --new:#7a3ff2; --new-soft:#efe8fe;
-    --code:#f0f3f7;
+    --warn:#b25e09; --warn-soft:#fdf0dc; --bad:#b42318; --bad-soft:#fde7e5;
+    --new:#7a3ff2; --new-soft:#efe8fe; --code:#f0f3f7;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --bg:#0f141b; --card:#171e27; --ink:#e6ebf2; --muted:#9aa6b6; --line:#2a3441;
-      --accent:#5aa2ff; --accent-soft:#16283f; --good:#4cc28a; --good-soft:#12302299;
-      --warn:#f0a548; --warn-soft:#3a2a12; --new:#a98bff; --new-soft:#261c45; --code:#1d2631;
+      --accent:#5aa2ff; --accent-soft:#16283f; --good:#4cc28a; --good-soft:#123022;
+      --warn:#f0a548; --warn-soft:#3a2a12; --bad:#ff8a80; --bad-soft:#3d1a18;
+      --new:#a98bff; --new-soft:#261c45; --code:#1d2631;
     }
   }
+  :root[data-theme="dark"]{
+    --bg:#0f141b; --card:#171e27; --ink:#e6ebf2; --muted:#9aa6b6; --line:#2a3441;
+    --accent:#5aa2ff; --accent-soft:#16283f; --good:#4cc28a; --good-soft:#123022;
+    --warn:#f0a548; --warn-soft:#3a2a12; --bad:#ff8a80; --bad-soft:#3d1a18;
+    --new:#a98bff; --new-soft:#261c45; --code:#1d2631;
+  }
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:64px}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-  .wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
-  header{padding:40px 0 8px}
-  h1{font-size:2rem;margin:0 0 8px;line-height:1.2}
-  h2{font-size:1.4rem;margin:44px 0 12px;padding-top:8px;border-top:1px solid var(--line)}
-  h3{font-size:1.05rem;margin:22px 0 6px}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 16px 72px}
+  .topbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+  .topbar .in{max-width:1020px;margin:0 auto;padding:8px 16px;display:flex;gap:6px;align-items:center;overflow-x:auto;white-space:nowrap}
+  .topbar a{font-size:.8rem;text-decoration:none;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:999px;flex:none}
+  .topbar button{margin-left:auto;flex:none;font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:3px 10px;cursor:pointer}
+  header{padding:36px 0 4px}
+  h1{font-size:2.1rem;margin:6px 0 8px;line-height:1.2}
+  h2{font-size:1.45rem;margin:52px 0 10px;padding-top:10px;border-top:1px solid var(--line)}
+  h2 .n{color:var(--muted);font-weight:500;margin-right:6px}
+  h3{font-size:1.05rem;margin:26px 0 6px}
   p{margin:8px 0}
-  .lede{color:var(--muted);font-size:1.05rem;max-width:720px}
-  nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
-  nav a{font-size:.85rem;text-decoration:none;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-  .tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.03em;padding:2px 8px;border-radius:999px;vertical-align:middle}
+  .lede{color:var(--muted);font-size:1.08rem;max-width:760px}
+  .sub{color:var(--muted);font-size:.9rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0}
+  .card>:first-child{margin-top:0}
+  .card>:last-child{margin-bottom:0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+  .grid .card{margin:0}
+  .tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.03em;padding:2px 8px;border-radius:999px;vertical-align:middle;white-space:nowrap}
   .tag.new{background:var(--new-soft);color:var(--new)}
   .tag.good{background:var(--good-soft);color:var(--good)}
   .tag.warn{background:var(--warn-soft);color:var(--warn)}
+  .tag.bad{background:var(--bad-soft);color:var(--bad)}
   .tag.ctx{background:var(--code);color:var(--muted)}
+  .tag.acc{background:var(--accent-soft);color:var(--accent)}
   table{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
   th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  th{font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);position:sticky;top:0;background:var(--bg)}
   .scroll{overflow-x:auto}
-  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem}
+  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.84rem}
   code{background:var(--code);padding:1px 5px;border-radius:4px}
   pre{background:var(--code);padding:12px 14px;border-radius:8px;overflow-x:auto;margin:8px 0;line-height:1.5}
   .callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:6px;margin:14px 0}
@@ -55,103 +72,139 @@
   .box.ctx{fill:var(--code);stroke:var(--line)}
   .box.ok{fill:var(--good-soft);stroke:var(--good)}
   .box.hl{fill:var(--accent-soft);stroke:var(--accent)}
+  .box.warn{fill:var(--warn-soft);stroke:var(--warn)}
+  .box.bad{fill:var(--bad-soft);stroke:var(--bad)}
   .arrow{stroke:var(--muted);stroke-width:1.6;fill:none}
   .sm{font-size:11px;fill:var(--muted)}
-  .cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-  footer{margin-top:48px;color:var(--muted);font-size:.85rem}
+  .cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px}
+  .cmp .card{margin:0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .chip{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  input.search{font:inherit;font-size:.9rem;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);min-width:220px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600}
+  details[open] summary{margin-bottom:6px}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+  .steps li{counter-increment:s;position:relative;padding:8px 10px 8px 44px;margin:6px 0;background:var(--card);border:1px solid var(--line);border-radius:10px}
+  .steps li::before{content:counter(s);position:absolute;left:10px;top:8px;width:26px;height:26px;border-radius:50%;background:var(--new);color:#fff;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+  .kpi div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .kpi b{display:block;font-size:1.05rem}
+  footer{margin-top:56px;color:var(--muted);font-size:.85rem}
   @media (max-width:520px){h1{font-size:1.6rem}}
+  @media print{
+    .topbar,.chips,input.search{display:none}
+    body{background:#fff;font-size:12px}
+    h2{break-before:page}
+    details{break-inside:avoid}
+    details:not([open]) > *:not(summary){display:block}
+  }
 </style>
 </head>
 <body>
+
+<div class="topbar"><div class="in">
+  <a href="#summary">Summary</a><a href="#problem">Problem</a><a href="#idea">Idea</a><a href="#omop">OMOP</a>
+  <a href="#patient">Patient</a><a href="#compare">Compare</a><a href="#arch">Architecture</a>
+  <a href="#matrix">Mapping matrix</a><a href="#value">Advantages</a><a href="#risks">Risks</a>
+  <a href="#proof">Proof</a><a href="#plan">Plan</a><a href="#decisions">Decisions</a><a href="#glossary">Glossary</a>
+  <button id="theme" type="button" aria-label="Toggle dark mode">Theme</button>
+</div></div>
+
 <div class="wrap">
 
 <header>
-  <span class="tag new">NEW L3 PRODUCT</span>
-  <h1>FHIR to OMOP: a new L3 data product</h1>
-  <p class="lede">FHIR stays our base. OMOP becomes an analytics-ready product on top of foundation, so analysts and AI agents can ask real questions without re-solving FHIR parsing and code-system differences every time.</p>
-  <nav>
-    <a href="#problem">1 Problem</a>
-    <a href="#idea">2 The idea</a>
-    <a href="#omop">3 What OMOP is</a>
-    <a href="#patient">4 A patient in OMOP</a>
-    <a href="#compare">5 Same question, two models</a>
-    <a href="#product">6 What we build</a>
-    <a href="#value">7 Advantages</a>
-    <a href="#limits">8 Limits and risks</a>
-    <a href="#plan">9 Plan</a>
-    <a href="#ask">10 Discussion</a>
-  </nav>
+  <span class="tag new">NEW L3 DATA PRODUCT</span> <span class="tag ctx">DESIGN PROPOSAL</span>
+  <h1>FHIR to OMOP: an analytics-ready L3 product</h1>
+  <p class="lede">FHIR stays our base. OMOP becomes an additional consumer data product on top of foundation, so analysts and AI agents can ask real questions without re-solving FHIR parsing and code-system differences on every query.</p>
 </header>
 
-<!-- 1 -->
-<h2 id="problem">1. The problem</h2>
-<p>Our consumers will increasingly be AI systems, and they will ask open-ended analytical questions. Foundation holds correct, complete FHIR R4, but FHIR is built for exchange, not analysis. Take: <em>"How many patients aged 20 to 30 had an HbA1c above 9% last year?"</em></p>
+<!-- SUMMARY -->
+<h2 id="summary"><span class="n">0</span>Summary for decision makers</h2>
 <div class="grid">
-  <div class="card"><strong>Many parses per question</strong><p>Patient to Observation is a string reference. The test is hidden in <code>code.coding[]</code>, an array. The value may be in <code>valueQuantity</code>, a coded value, or a component.</p></div>
-  <div class="card"><strong>Many code systems</strong><p>Submitters send SNOMED, ICD-10, LOINC, CPT and local codes. The same lab can arrive under several, so every query needs a hand-maintained list of codes.</p></div>
-  <div class="card"><strong>No standard enrichment</strong><p>There are no hierarchies ("any statin", "any diabetes"), no normalised units, no consistent visit types. Each consumer rebuilds them, differently.</p></div>
+  <div class="card"><strong>What</strong><p>A new L3 product that exposes foundation data as an OMOP Common Data Model (v5.4): one person table, domain tables for conditions, drugs, measurements and visits, and standard concept IDs for every code.</p></div>
+  <div class="card"><strong>Why</strong><p>AI systems will ask open analytical questions. In FHIR each question needs JSON parsing, many joins, and hand-kept lists of codes across SNOMED, ICD-10, LOINC, CPT and local systems. OMOP does that work once, centrally.</p></div>
+  <div class="card"><strong>How</strong><p>Streams and tasks from foundation into a staging and mapping layer, a vocabulary reference layer (Athena), and OMOP tables. Landing, foundation and RQ are untouched.</p></div>
+  <div class="card"><strong>Main risk</strong><p>Local codes cannot map themselves. Coverage depends on curated mappings per submitter. We measure and report it rather than hide it.</p></div>
 </div>
-<div class="callout"><strong>It is doable in FHIR.</strong> The point is cost and consistency: every analyst and every AI agent pays that cost on every question, and gives slightly different answers.</div>
+<div class="callout good"><strong>The ask:</strong> agree to a first slice (Person, Observation Period, Visit, Condition, Measurement, Drug), name an owner for vocabulary and local-code mapping, and run a benchmark that compares AI answer accuracy on foundation against OMOP. See <a href="#plan">Plan</a> and <a href="#decisions">Decisions</a>.</div>
+
+<!-- 1 -->
+<h2 id="problem"><span class="n">1</span>The problem</h2>
+<p>Foundation holds correct, complete FHIR R4, but FHIR is built for exchange, not analysis. Take the question <em>"How many patients aged 20 to 30 had an HbA1c above 9% last year?"</em></p>
+<div class="grid">
+  <div class="card"><strong>Many parses per question</strong><p>Patient to Observation is a string reference. The test sits inside <code>code.coding[]</code>, an array. The value may be in <code>valueQuantity</code>, a coded value, or a component.</p></div>
+  <div class="card"><strong>Many code systems</strong><p>Submitters send SNOMED, ICD-10, LOINC, CPT and local codes. The same lab can arrive under several, so each query needs a maintained list of codes.</p></div>
+  <div class="card"><strong>No standard enrichment</strong><p>No hierarchies ("any statin", "any diabetes"), no normalised units, no consistent visit types. Each consumer rebuilds these, differently.</p></div>
+</div>
+<div class="callout"><strong>It is doable in FHIR.</strong> The issue is cost and consistency: every analyst and AI agent pays that cost on every question, and different people get different answers.</div>
 
 <!-- 2 -->
-<h2 id="idea">2. The idea</h2>
-<p>Add one more L3 product that does the hard work once. It reads foundation, standardises the codes, and presents the data in the OMOP Common Data Model.</p>
-
+<h2 id="idea"><span class="n">2</span>The idea</h2>
+<p>Add one more L3 product that does the hard work once. It reads foundation, standardises codes, and presents the data in the OMOP Common Data Model.</p>
 <figure>
 <svg viewBox="0 0 900 250" role="img" aria-label="Foundation feeds RQ (existing) and OMOP (new) in L3, with a vocabulary reference">
-  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
   <rect class="box ctx" x="10" y="80" width="190" height="90" rx="10"/>
   <text x="105" y="112" text-anchor="middle" font-size="15" font-weight="600">FOUNDATION</text>
   <text x="105" y="132" text-anchor="middle" class="sm">dedup, semi-flat FHIR R4</text>
   <text x="105" y="148" text-anchor="middle" class="sm">append-only</text>
-
   <rect class="box" x="330" y="20" width="200" height="70" rx="10"/>
   <text x="430" y="52" text-anchor="middle" font-size="15" font-weight="600">RQ</text>
   <text x="430" y="70" text-anchor="middle" class="sm">existing L3 product</text>
-
   <rect class="box new" x="330" y="120" width="200" height="90" rx="10"/>
   <text x="430" y="152" text-anchor="middle" font-size="15" font-weight="600">OMOP CDM v5.4</text>
   <text x="430" y="170" text-anchor="middle" class="sm">NEW L3 product</text>
   <text x="430" y="186" text-anchor="middle" class="sm">standard concepts, one model</text>
-
   <rect class="box new" x="150" y="200" width="150" height="42" rx="8"/>
   <text x="225" y="225" text-anchor="middle" font-size="13" font-weight="600">REF_VOCAB (Athena)</text>
-
   <rect class="box ok" x="650" y="105" width="240" height="120" rx="10"/>
   <text x="770" y="132" text-anchor="middle" font-size="14" font-weight="600">Consumers</text>
   <text x="770" y="154" text-anchor="middle" class="sm">analysts · SQL</text>
   <text x="770" y="172" text-anchor="middle" class="sm">AI agents (Cortex Analyst)</text>
   <text x="770" y="190" text-anchor="middle" class="sm">OHDSI tools (DQD, Achilles, ATLAS)</text>
-
-  <path class="arrow" d="M200 110 L330 55" marker-end="url(#ah)"/>
-  <path class="arrow" d="M200 140 L330 160" marker-end="url(#ah)"/>
-  <path class="arrow" d="M300 221 L335 200" marker-end="url(#ah)"/>
-  <path class="arrow" d="M530 165 L650 165" marker-end="url(#ah)"/>
+  <path class="arrow" d="M200 110 L330 55" marker-end="url(#a1)"/>
+  <path class="arrow" d="M200 140 L330 160" marker-end="url(#a1)"/>
+  <path class="arrow" d="M300 221 L335 200" marker-end="url(#a1)"/>
+  <path class="arrow" d="M530 165 L650 165" marker-end="url(#a1)"/>
   <text x="205" y="62" class="sm">streams + tasks</text>
   <text x="205" y="188" class="sm">streams + tasks</text>
 </svg>
-<figcaption>Landing and foundation are unchanged. Only the purple parts are new.</figcaption>
+<figcaption>Landing and foundation are unchanged. Purple marks what is new.</figcaption>
 </figure>
-
-<div class="callout good"><strong>We are not replacing FHIR.</strong> Foundation stays the full-fidelity base. Every OMOP row keeps its original source code and a lineage pointer to the foundation resource, so any fact can be traced back.</div>
+<div class="callout good"><strong>We are not replacing FHIR.</strong> Foundation stays the full-fidelity base. Every OMOP row keeps its original source code and a lineage pointer to the foundation resource.</div>
 
 <!-- 3 -->
-<h2 id="omop">3. What OMOP is, in seven ideas</h2>
-<p>OMOP (the OHDSI Common Data Model) is an open community standard for observational health data. Its current documented version is 5.5; FHIR-to-OMOP guidance targets 5.4, which is what we propose.</p>
+<h2 id="omop"><span class="n">3</span>What OMOP is, in seven ideas</h2>
+<p>OMOP (the OHDSI Common Data Model) is an open community standard for observational health data, maintained by the OHDSI CDM Working Group. The documentation site lists v5.5 as current; the FHIR-to-OMOP guide targets v5.4, which is what we propose.</p>
 <div class="grid">
   <div class="card"><strong>1. Person-centric</strong><p>One <code>PERSON</code> row per patient. Everything else is a dated row pointing back to <code>person_id</code>.</p></div>
-  <div class="card"><strong>2. Split by domain, not resource</strong><p>Facts go to the table for what they <em>are</em> (condition, drug, procedure, measurement, observation, device), decided by the concept's domain, not by the FHIR resource type. One FHIR Observation can become a Measurement or an Observation.</p></div>
+  <div class="card"><strong>2. Split by domain, not resource</strong><p>Facts go to the table for what they <em>are</em> (condition, drug, procedure, measurement, observation, device), decided by the concept's domain. One FHIR Observation can become a Measurement or an Observation.</p></div>
   <div class="card"><strong>3. Standard vocabularies</strong><p>Every term is a row in <code>CONCEPT</code> with an integer ID and a domain. Standards: SNOMED (conditions), RxNorm (drugs), LOINC (measurements), CVX (vaccines), UCUM (units).</p></div>
-  <div class="card"><strong>4. Source to standard mapping</strong><p>Codes like ICD-10 are mapped to standard concepts through <code>CONCEPT_RELATIONSHIP</code> ("Maps to"). Unmappable codes get concept <code>0</code>; the row is kept.</p></div>
+  <div class="card"><strong>4. Source to standard mapping</strong><p>Codes such as ICD-10 map to standard concepts via <code>CONCEPT_RELATIONSHIP</code> ("Maps to"). Unmappable codes get concept <code>0</code>; the row is kept.</p></div>
   <div class="card"><strong>5. Hierarchies</strong><p><code>CONCEPT_ANCESTOR</code> stores "is-a" relationships, so "any statin" or "any diabetes" is one join.</p></div>
-  <div class="card"><strong>6. Three columns per fact</strong><p><code>*_concept_id</code> (standard, for analytics), <code>*_source_value</code> (original code text), <code>*_source_concept_id</code> (original code as a concept). Plus <code>*_type_concept_id</code> for provenance (EHR, claim, registry).</p></div>
-  <div class="card"><strong>7. Derived data</strong><p><code>OBSERVATION_PERIOD</code> (when the person is observable) is required by OHDSI tools and does not exist in FHIR. Eras (<code>CONDITION_ERA</code>, <code>DRUG_ERA</code>) roll repeated records into episodes.</p></div>
+  <div class="card"><strong>6. Three columns per fact</strong><p><code>*_concept_id</code> (standard, for analytics), <code>*_source_value</code> (original text), <code>*_source_concept_id</code> (original code as a concept). Plus <code>*_type_concept_id</code> for provenance.</p></div>
+  <div class="card"><strong>7. Derived data</strong><p><code>OBSERVATION_PERIOD</code> (when the person is observable) is required by OHDSI tools and absent from FHIR. Eras (<code>CONDITION_ERA</code>, <code>DRUG_ERA</code>) roll repeated records into episodes.</p></div>
 </div>
+
+<h3>Conventions that matter for the ETL</h3>
+<div class="scroll"><table>
+<tr><th>Convention</th><th>Rule (CDM v5.4 documentation)</th></tr>
+<tr><td>Unmapped codes</td><td><code>*_concept_id = 0</code>. Keep the row and the source value.</td></tr>
+<tr><td>Domain rules</td><td>CONDITION_OCCURRENCE takes only Condition-domain concepts, PROCEDURE_OCCURRENCE only Procedure, DRUG_EXPOSURE only Drug. OBSERVATION must not hold Condition, Procedure, Drug, Device, Specimen or Measurement concepts.</td></tr>
+<tr><td>Value and unit fields</td><td>NULL when there is no value or unit; <code>0</code> when one exists but is unmapped; a concept ID when mapped.</td></tr>
+<tr><td>Datetimes</td><td>Optional. NULL when the source has no time of day.</td></tr>
+<tr><td>Person</td><td><code>gender_concept_id</code> is biological sex at birth; gender identity belongs in OBSERVATION.</td></tr>
+<tr><td>Observation period</td><td>Periods must not overlap or be adjacent; merge them.</td></tr>
+<tr><td>Visit</td><td><code>visit_end_date</code> is mandatory.</td></tr>
+<tr><td>Drug exposure</td><td><code>drug_exposure_end_date</code> is mandatory; <code>days_supply</code> cannot be negative.</td></tr>
+</table></div>
 
 <h3>Table groups</h3>
 <div class="scroll"><table>
 <tr><th>Group</th><th>Tables</th><th>Our plan</th></tr>
-<tr><td>Clinical</td><td>PERSON, OBSERVATION_PERIOD, VISIT_OCCURRENCE, VISIT_DETAIL, CONDITION_OCCURRENCE, DRUG_EXPOSURE, PROCEDURE_OCCURRENCE, DEVICE_EXPOSURE, MEASUREMENT, OBSERVATION, DEATH, NOTE, NOTE_NLP, SPECIMEN, FACT_RELATIONSHIP</td><td>First slice: PERSON, OBSERVATION_PERIOD, VISIT, CONDITION, MEASUREMENT, DRUG</td></tr>
+<tr><td>Clinical</td><td>PERSON, OBSERVATION_PERIOD, VISIT_OCCURRENCE, VISIT_DETAIL, CONDITION_OCCURRENCE, DRUG_EXPOSURE, PROCEDURE_OCCURRENCE, DEVICE_EXPOSURE, MEASUREMENT, OBSERVATION, DEATH, NOTE, NOTE_NLP, SPECIMEN, FACT_RELATIONSHIP</td><td><span class="tag new">Slice 1</span> PERSON, OBSERVATION_PERIOD, VISIT, CONDITION, MEASUREMENT, DRUG</td></tr>
 <tr><td>Health system</td><td>LOCATION, CARE_SITE, PROVIDER</td><td>Phase 2</td></tr>
 <tr><td>Economics</td><td>PAYER_PLAN_PERIOD, COST</td><td>PAYER_PLAN_PERIOD later from Coverage; COST out (no claims)</td></tr>
 <tr><td>Derived</td><td>CONDITION_ERA, DRUG_ERA, DOSE_ERA, EPISODE, EPISODE_EVENT</td><td>Eras in phase 2</td></tr>
@@ -160,48 +213,40 @@
 </table></div>
 
 <!-- 4 -->
-<h2 id="patient">4. What a patient looks like in OMOP</h2>
+<h2 id="patient"><span class="n">4</span>What a patient looks like in OMOP</h2>
 <p>Example: Maria, born 1975-03-12, female, White, Hispanic. Type 2 diabetes diagnosed 2022. On 2024-06-01 she had an outpatient visit, an HbA1c of 8.2%, and was prescribed metformin.</p>
-
 <figure>
 <svg viewBox="0 0 900 430" role="img" aria-label="PERSON in the centre with event tables around it">
-  <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
   <rect class="box hl" x="340" y="165" width="220" height="100" rx="12"/>
   <text x="450" y="195" text-anchor="middle" font-size="16" font-weight="700">PERSON</text>
   <text x="450" y="215" text-anchor="middle" class="sm">person_id 1001</text>
   <text x="450" y="231" text-anchor="middle" class="sm">female · born 1975 · White · Hispanic</text>
   <text x="450" y="247" text-anchor="middle" class="sm">location_id → LOCATION</text>
-
   <rect class="box new" x="20" y="20" width="230" height="64" rx="10"/>
   <text x="135" y="46" text-anchor="middle" font-weight="600" font-size="13">OBSERVATION_PERIOD</text>
   <text x="135" y="64" text-anchor="middle" class="sm">2019-02 to 2025-01 (derived)</text>
-
   <rect class="box" x="335" y="20" width="230" height="64" rx="10"/>
   <text x="450" y="46" text-anchor="middle" font-weight="600" font-size="13">VISIT_OCCURRENCE</text>
   <text x="450" y="64" text-anchor="middle" class="sm">Outpatient · 2024-06-01</text>
-
   <rect class="box" x="650" y="20" width="230" height="64" rx="10"/>
   <text x="765" y="46" text-anchor="middle" font-weight="600" font-size="13">CONDITION_OCCURRENCE</text>
   <text x="765" y="64" text-anchor="middle" class="sm">Type 2 diabetes · from 2022-04-10</text>
-
   <rect class="box" x="20" y="346" width="230" height="64" rx="10"/>
   <text x="135" y="372" text-anchor="middle" font-weight="600" font-size="13">MEASUREMENT</text>
   <text x="135" y="390" text-anchor="middle" class="sm">HbA1c 8.2 % · 2024-06-01</text>
-
   <rect class="box" x="335" y="346" width="230" height="64" rx="10"/>
   <text x="450" y="372" text-anchor="middle" font-weight="600" font-size="13">DRUG_EXPOSURE</text>
   <text x="450" y="390" text-anchor="middle" class="sm">Metformin · 2024-06-01 to 08-30</text>
-
   <rect class="box new" x="650" y="346" width="230" height="64" rx="10"/>
   <text x="765" y="372" text-anchor="middle" font-weight="600" font-size="13">CONDITION_ERA / DRUG_ERA</text>
   <text x="765" y="390" text-anchor="middle" class="sm">episodes (derived)</text>
-
-  <path class="arrow" d="M340 190 L250 70" marker-end="url(#ah2)"/>
-  <path class="arrow" d="M450 165 L450 84" marker-end="url(#ah2)"/>
-  <path class="arrow" d="M560 190 L650 70" marker-end="url(#ah2)"/>
-  <path class="arrow" d="M340 240 L250 355" marker-end="url(#ah2)"/>
-  <path class="arrow" d="M450 265 L450 346" marker-end="url(#ah2)"/>
-  <path class="arrow" d="M560 240 L650 355" marker-end="url(#ah2)"/>
+  <path class="arrow" d="M340 190 L250 70" marker-end="url(#a2)"/>
+  <path class="arrow" d="M450 165 L450 84" marker-end="url(#a2)"/>
+  <path class="arrow" d="M560 190 L650 70" marker-end="url(#a2)"/>
+  <path class="arrow" d="M340 240 L250 355" marker-end="url(#a2)"/>
+  <path class="arrow" d="M450 265 L450 346" marker-end="url(#a2)"/>
+  <path class="arrow" d="M560 240 L650 355" marker-end="url(#a2)"/>
   <text x="20" y="205" class="sm">purple = derived, not in FHIR</text>
   <text x="20" y="222" class="sm">visit_occurrence_id links</text>
   <text x="20" y="238" class="sm">condition, drug and lab to the visit</text>
@@ -215,11 +260,11 @@
 <tr><td><code>PERSON</code></td><td>person_id 1001; gender_concept_id 8532 (Female); year_of_birth 1975; month 3; day 12; race_concept_id 8527 (White); ethnicity_concept_id 38003563 (Hispanic or Latino); person_source_value = FHIR Patient id</td></tr>
 <tr><td><code>OBSERVATION_PERIOD</code></td><td>2019-02-10 to 2025-01-15; period_type = EHR (derived by us)</td></tr>
 <tr><td><code>VISIT_OCCURRENCE</code></td><td>visit_concept_id 9202 (Outpatient); 2024-06-01 to 2024-06-01; care_site_id, provider_id optional</td></tr>
-<tr><td><code>CONDITION_OCCURRENCE</code></td><td>condition_concept_id 201826 (Type 2 diabetes mellitus); start 2022-04-10; condition_source_value = original code (e.g. SNOMED 44054006 or ICD-10 E11.9); condition_source_concept_id = concept of that source code; visit_occurrence_id</td></tr>
+<tr><td><code>CONDITION_OCCURRENCE</code></td><td>condition_concept_id 201826 (Type 2 diabetes mellitus); start 2022-04-10; condition_source_value = original code (SNOMED 44054006, ICD-10 E11.9 or local); condition_source_concept_id; visit_occurrence_id</td></tr>
 <tr><td><code>MEASUREMENT</code></td><td>measurement_concept_id = HbA1c LOINC concept; value_as_number 8.2; unit_concept_id = percent; date 2024-06-01</td></tr>
 <tr><td><code>DRUG_EXPOSURE</code></td><td>drug_concept_id = metformin RxNorm concept; start 2024-06-01; end 2024-08-30 (required, derived from dosage or days supply); days_supply 90</td></tr>
 </table></div>
-<p class="sm" style="color:var(--muted);font-size:.85rem">Concept IDs are illustrative, quoted from the public vocabulary as best known. They must be verified against the Athena release we adopt.</p>
+<p class="sub">Concept IDs are illustrative and must be verified against the Athena release we adopt.</p>
 
 <h3>How a FHIR Condition becomes a row</h3>
 <pre>FHIR Condition (foundation)                       OMOP CONDITION_OCCURRENCE
@@ -234,8 +279,8 @@
   RESOURCE_ID                         ──►    lineage column back to foundation</pre>
 
 <!-- 5 -->
-<h2 id="compare">5. The same question in both models</h2>
-<p><em>"Patients aged 20 to 30 with an HbA1c above 9%."</em> Illustrative SQL; column names on the FHIR side are indicative of our foundation pattern.</p>
+<h2 id="compare"><span class="n">5</span>The same question in both models</h2>
+<p><em>"Patients aged 20 to 30 with an HbA1c above 9%."</em> Illustrative SQL; FHIR-side column names follow our foundation pattern but were not run against production.</p>
 <div class="cmp">
 <div class="card"><strong>Foundation (FHIR)</strong> <span class="tag warn">you maintain the code list</span>
 <pre>SELECT DISTINCT p.RESOURCE_ID
@@ -266,133 +311,436 @@ WHERE m.value_as_number > 9
   AND m.unit_concept_id = :percent_concept
   AND YEAR(m.measurement_date) - p.year_of_birth
       BETWEEN 20 AND 30;</pre>
-<p style="font-size:.88rem;color:var(--muted)">Local lab codes only appear in the OMOP answer if they have been mapped. That mapping is done once, centrally, and measured by a coverage report.</p></div>
+<p class="sub">Local lab codes only appear here if they have been mapped. That mapping is done once, centrally, and measured by a coverage report.</p></div>
 </div>
 
+<div class="card"><strong>More examples where the gap is large</strong>
+<div class="scroll"><table>
+<tr><th>Question</th><th>In FHIR you must</th><th>In OMOP</th></tr>
+<tr><td>Patients on any statin</td><td>List every brand and generic code from every submitter</td><td>One ancestor concept on <code>DRUG_EXPOSURE</code></td></tr>
+<tr><td>Metformin started after a diabetes diagnosis</td><td>Resolve medication reference/code/text; compare dates across two resources</td><td>Join <code>CONDITION_OCCURRENCE</code> and <code>DRUG_EXPOSURE</code> on <code>person_id</code>, compare dates</td></tr>
+<tr><td>Outpatient visits per year for hypertension</td><td>Interpret encounter class codes; define cohort across resources</td><td>Visit concept plus condition ancestor; same columns everywhere</td></tr>
+<tr><td>Blood pressure distribution</td><td>Handle panel with systolic/diastolic components</td><td>One <code>MEASUREMENT</code> row per component with a concept each</td></tr>
+</table></div></div>
+
 <!-- 6 -->
-<h2 id="product">6. What we build</h2>
+<h2 id="arch"><span class="n">6</span>Architecture of the new product</h2>
+<p>Landing and foundation are context only. What is new sits to the right of foundation.</p>
+
+<h3>6.1 Schemas</h3>
+<div class="scroll"><table>
+<tr><th>Schema</th><th>Contents</th><th>Audience</th></tr>
+<tr><td><code>REF_VOCAB</code></td><td>Athena tables plus <code>SOURCE_TO_CONCEPT_MAP</code> for local codes. Versioned by vocabulary release.</td><td>Shared reference; any L3 product</td></tr>
+<tr><td><code>L3_OMOP_STG</code></td><td>Change log, version resolution, ID crosswalks, mapping views</td><td>Internal</td></tr>
+<tr><td><code>L3_OMOP</code></td><td>OMOP CDM v5.4 tables and <code>CDM_SOURCE</code></td><td>Consumers</td></tr>
+<tr><td><code>L3_OMOP_QA</code></td><td>Mapping coverage, unmapped-code report, data-quality results</td><td>Product owners, data stewards</td></tr>
+</table></div>
+<p>Every OMOP row keeps <code>*_source_value</code>, <code>*_source_concept_id</code> and a lineage column holding the foundation <code>RESOURCE_ID</code>, so any fact traces back to full-fidelity FHIR.</p>
+
+<h3>6.2 Refresh flow (streams and tasks)</h3>
 <figure>
 <svg viewBox="0 0 900 380" role="img" aria-label="Refresh pipeline from foundation streams to OMOP tables">
-  <defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
   <rect class="box ctx" x="10" y="150" width="150" height="80" rx="10"/>
   <text x="85" y="182" text-anchor="middle" font-weight="600" font-size="14">FOUNDATION</text>
   <text x="85" y="200" text-anchor="middle" class="sm">streams per table</text>
-
   <rect class="box new" x="205" y="20" width="200" height="56" rx="10"/>
   <text x="305" y="45" text-anchor="middle" font-weight="600" font-size="13">1 Capture change set</text>
   <text x="305" y="62" text-anchor="middle" class="sm">resources + affected persons</text>
-
   <rect class="box new" x="205" y="100" width="200" height="56" rx="10"/>
   <text x="305" y="125" text-anchor="middle" font-weight="600" font-size="13">2 Latest version wins</text>
   <text x="305" y="142" text-anchor="middle" class="sm">per resource_id (meta.lastUpdated)</text>
-
   <rect class="box new" x="205" y="180" width="200" height="56" rx="10"/>
   <text x="305" y="205" text-anchor="middle" font-weight="600" font-size="13">3 Resolve identity</text>
   <text x="305" y="222" text-anchor="middle" class="sm">person key · FHIR id → OMOP id</text>
-
   <rect class="box new" x="205" y="260" width="200" height="56" rx="10"/>
   <text x="305" y="285" text-anchor="middle" font-weight="600" font-size="13">4 Map to OMOP</text>
   <text x="305" y="302" text-anchor="middle" class="sm">concept lookup · domain routing</text>
-
   <rect class="box new" x="450" y="260" width="200" height="56" rx="10"/>
   <text x="550" y="285" text-anchor="middle" font-weight="600" font-size="13">5 Upsert event tables</text>
   <text x="550" y="302" text-anchor="middle" class="sm">replace older version</text>
-
   <rect class="box new" x="450" y="180" width="200" height="56" rx="10"/>
   <text x="550" y="205" text-anchor="middle" font-weight="600" font-size="13">6 Rebuild derived rows</text>
   <text x="550" y="222" text-anchor="middle" class="sm">obs. period · eras (changed persons)</text>
-
   <rect class="box new" x="450" y="100" width="200" height="56" rx="10"/>
   <text x="550" y="125" text-anchor="middle" font-weight="600" font-size="13">7 Coverage + DQ reports</text>
   <text x="550" y="142" text-anchor="middle" class="sm">unmapped codes · row counts</text>
-
   <rect class="box ok" x="710" y="170" width="180" height="80" rx="10"/>
   <text x="800" y="203" text-anchor="middle" font-weight="600" font-size="14">L3_OMOP</text>
   <text x="800" y="222" text-anchor="middle" class="sm">consumer-facing CDM</text>
-
   <rect class="box" x="10" y="290" width="160" height="56" rx="10"/>
   <text x="90" y="315" text-anchor="middle" font-weight="600" font-size="13">REF_VOCAB</text>
   <text x="90" y="332" text-anchor="middle" class="sm">Athena + local code maps</text>
-
-  <path class="arrow" d="M160 175 L205 55" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M305 76 L305 100" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M305 156 L305 180" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M305 236 L305 260" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M405 288 L450 288" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M550 260 L550 236" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M550 180 L550 156" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M650 205 L710 210" marker-end="url(#ah3)"/>
-  <path class="arrow" d="M170 318 L205 290" marker-end="url(#ah3)"/>
+  <path class="arrow" d="M160 175 L205 55" marker-end="url(#a3)"/>
+  <path class="arrow" d="M305 76 L305 100" marker-end="url(#a3)"/>
+  <path class="arrow" d="M305 156 L305 180" marker-end="url(#a3)"/>
+  <path class="arrow" d="M305 236 L305 260" marker-end="url(#a3)"/>
+  <path class="arrow" d="M405 288 L450 288" marker-end="url(#a3)"/>
+  <path class="arrow" d="M550 260 L550 236" marker-end="url(#a3)"/>
+  <path class="arrow" d="M550 180 L550 156" marker-end="url(#a3)"/>
+  <path class="arrow" d="M650 205 L710 210" marker-end="url(#a3)"/>
+  <path class="arrow" d="M170 318 L205 290" marker-end="url(#a3)"/>
 </svg>
-<figcaption>Event tables map row by row. Derived tables are recomputed for the persons whose data changed. All steps run as streams and tasks, like the rest of the platform.</figcaption>
+<figcaption>Event tables map row by row. Derived tables are recomputed for persons whose data changed.</figcaption>
+</figure>
+<ol class="steps">
+  <li><strong>Capture change set.</strong> Streams on every foundation table are copied into one change-log table in a single transaction. A stream's offset advances when its changes are consumed in a committed transaction, so this keeps a multi-stream product consistent and replayable.</li>
+  <li><strong>Latest version wins.</strong> Foundation is append-only and deduplicates on full content, so two versions of one resource can coexist. Keep the newest per <code>resource_id</code>.</li>
+  <li><strong>Resolve identity.</strong> Patient references become the person key from the existing identity logic; FHIR IDs become stable integer OMOP IDs through a crosswalk.</li>
+  <li><strong>Map to OMOP.</strong> Pick the best coding, look up the standard concept, route to the table for the concept's domain, keep source values.</li>
+  <li><strong>Upsert event tables.</strong> Replace the earlier OMOP row of the same resource so no fact is counted twice.</li>
+  <li><strong>Rebuild derived rows</strong> for affected persons: observation period and eras.</li>
+  <li><strong>Refresh coverage and quality reports.</strong></li>
+</ol>
+
+<h3>6.3 One resource, two versions, one fact</h3>
+<figure>
+<svg viewBox="0 0 900 230" role="img" aria-label="Two foundation rows for one Observation resolve to one OMOP measurement row">
+  <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <rect class="box ctx" x="10" y="20" width="250" height="80" rx="10"/>
+  <text x="135" y="46" text-anchor="middle" font-weight="600" font-size="13">Foundation row A</text>
+  <text x="135" y="64" text-anchor="middle" class="sm">resource_id 77 · status preliminary</text>
+  <text x="135" y="80" text-anchor="middle" class="sm">value 8.9 · lastUpdated 10:00</text>
+  <rect class="box ctx" x="10" y="125" width="250" height="80" rx="10"/>
+  <text x="135" y="151" text-anchor="middle" font-weight="600" font-size="13">Foundation row B</text>
+  <text x="135" y="169" text-anchor="middle" class="sm">resource_id 77 · status final</text>
+  <text x="135" y="185" text-anchor="middle" class="sm">value 9.1 · lastUpdated 14:30</text>
+  <rect class="box new" x="330" y="72" width="240" height="86" rx="10"/>
+  <text x="450" y="100" text-anchor="middle" font-weight="600" font-size="13">Latest version wins</text>
+  <text x="450" y="118" text-anchor="middle" class="sm">group by resource_id</text>
+  <text x="450" y="134" text-anchor="middle" class="sm">order by lastUpdated desc, keep 1</text>
+  <rect class="box ok" x="640" y="72" width="250" height="86" rx="10"/>
+  <text x="765" y="100" text-anchor="middle" font-weight="600" font-size="13">MEASUREMENT (1 row)</text>
+  <text x="765" y="118" text-anchor="middle" class="sm">value_as_number 9.1</text>
+  <text x="765" y="134" text-anchor="middle" class="sm">lineage → resource_id 77</text>
+  <path class="arrow" d="M260 60 L330 95" marker-end="url(#a4)"/>
+  <path class="arrow" d="M260 165 L330 135" marker-end="url(#a4)"/>
+  <path class="arrow" d="M570 115 L640 115" marker-end="url(#a4)"/>
+</svg>
+<figcaption>Without this step, preliminary and final results would both be counted. If foundation has no <code>meta.lastUpdated</code>, the load timestamp is a weaker fallback because it reflects arrival order, not clinical order.</figcaption>
 </figure>
 
+<h3>6.4 How a code becomes a concept</h3>
+<figure>
+<svg viewBox="0 0 900 330" role="img" aria-label="Decision flow for mapping a FHIR coding to an OMOP concept">
+  <defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <rect class="box ctx" x="10" y="120" width="190" height="80" rx="10"/>
+  <text x="105" y="148" text-anchor="middle" font-weight="600" font-size="13">FHIR CodeableConcept</text>
+  <text x="105" y="166" text-anchor="middle" class="sm">coding[] from the submitter</text>
+  <text x="105" y="182" text-anchor="middle" class="sm">may hold several systems</text>
+  <rect class="box new" x="250" y="30" width="230" height="70" rx="10"/>
+  <text x="365" y="56" text-anchor="middle" font-weight="600" font-size="13">Standard system present?</text>
+  <text x="365" y="74" text-anchor="middle" class="sm">SNOMED · LOINC · RxNorm</text>
+  <text x="365" y="90" text-anchor="middle" class="sm">ICD-10 · CPT · CVX</text>
+  <rect class="box ok" x="540" y="20" width="200" height="90" rx="10"/>
+  <text x="640" y="46" text-anchor="middle" font-weight="600" font-size="13">Athena "Maps to"</text>
+  <text x="640" y="64" text-anchor="middle" class="sm">standard concept ID</text>
+  <text x="640" y="80" text-anchor="middle" class="sm">e.g. ICD-10 → SNOMED</text>
+  <rect class="box new" x="250" y="140" width="230" height="70" rx="10"/>
+  <text x="365" y="166" text-anchor="middle" font-weight="600" font-size="13">Local code curated?</text>
+  <text x="365" y="184" text-anchor="middle" class="sm">SOURCE_TO_CONCEPT_MAP</text>
+  <text x="365" y="200" text-anchor="middle" class="sm">per submitter + code</text>
+  <rect class="box ok" x="540" y="140" width="200" height="70" rx="10"/>
+  <text x="640" y="170" text-anchor="middle" font-weight="600" font-size="13">Curated mapping</text>
+  <text x="640" y="188" text-anchor="middle" class="sm">standard concept ID</text>
+  <rect class="box warn" x="250" y="245" width="230" height="70" rx="10"/>
+  <text x="365" y="271" text-anchor="middle" font-weight="600" font-size="13">Unmapped</text>
+  <text x="365" y="289" text-anchor="middle" class="sm">concept_id = 0, keep source value</text>
+  <text x="365" y="305" text-anchor="middle" class="sm">add to unmapped-code report</text>
+  <rect class="box hl" x="780" y="100" width="110" height="110" rx="10"/>
+  <text x="835" y="140" text-anchor="middle" font-weight="600" font-size="13">Route by</text>
+  <text x="835" y="158" text-anchor="middle" font-weight="600" font-size="13">domain</text>
+  <text x="835" y="180" text-anchor="middle" class="sm">table choice</text>
+  <path class="arrow" d="M200 150 L250 80" marker-end="url(#a5)"/>
+  <path class="arrow" d="M480 65 L540 65" marker-end="url(#a5)"/>
+  <text x="488" y="58" class="sm">yes</text>
+  <path class="arrow" d="M365 100 L365 140" marker-end="url(#a5)"/>
+  <text x="372" y="124" class="sm">no</text>
+  <path class="arrow" d="M480 175 L540 175" marker-end="url(#a5)"/>
+  <text x="488" y="168" class="sm">yes</text>
+  <path class="arrow" d="M365 210 L365 245" marker-end="url(#a5)"/>
+  <text x="372" y="232" class="sm">no</text>
+  <path class="arrow" d="M740 65 L810 100" marker-end="url(#a5)"/>
+  <path class="arrow" d="M740 175 L780 165" marker-end="url(#a5)"/>
+  <path class="arrow" d="M480 280 L835 280 L835 210" marker-end="url(#a5)"/>
+  <text x="560" y="272" class="sm">default domain from the FHIR resource type</text>
+</svg>
+<figcaption>If several codings map, a documented priority order decides, for example the most specific standard system first.</figcaption>
+</figure>
+
+<h3>6.5 Design points to state clearly</h3>
 <div class="grid">
-  <div class="card"><span class="tag new">NEW</span> <strong>Vocabulary layer</strong><p><code>REF_VOCAB</code>: Athena tables plus a curated <code>SOURCE_TO_CONCEPT_MAP</code> for local codes. Shared by any future product.</p></div>
-  <div class="card"><span class="tag new">NEW</span> <strong>Mapping logic</strong><p>Latest-version resolution, identity and ID crosswalks, coding priority (standard system first, then curated local map, else concept 0), domain routing.</p></div>
-  <div class="card"><span class="tag new">NEW</span> <strong>OMOP CDM tables</strong><p>First slice: PERSON, OBSERVATION_PERIOD, VISIT_OCCURRENCE, CONDITION_OCCURRENCE, MEASUREMENT, DRUG_EXPOSURE. Then procedures, observations, death, health-system tables, eras.</p></div>
-  <div class="card"><span class="tag new">NEW</span> <strong>Quality and coverage</strong><p>Mapping coverage by domain and submitter, unmapped-code backlog, row-count reconciliation to foundation, OHDSI data-quality checks.</p></div>
+  <div class="card"><strong>Events versus derived rows</strong><p>A Condition maps to one row independent of anything else. <code>OBSERVATION_PERIOD</code> and eras depend on a person's whole history, so when anything about a person changes we recompute that person's derived rows.</p></div>
+  <div class="card"><strong>Late-arriving data</strong><p>A Condition can arrive before its Encounter. <code>visit_occurrence_id</code> is nullable; the person-level rebuild back-fills the link once the Encounter lands.</p></div>
+  <div class="card"><strong>Stable integer IDs</strong><p>OMOP keys are integers. A persistent crosswalk gives each FHIR resource ID a fixed integer so IDs do not change when data is replayed.</p></div>
+  <div class="card"><strong>Cross-file references</strong><p>Practitioner, Organization and Location references use identifier queries rather than direct IDs, so resolving them into <code>PROVIDER</code> and <code>CARE_SITE</code> needs an explicit step with orphan handling.</p></div>
 </div>
 
-<h3>Two design points worth stating to the lead</h3>
-<div class="card"><strong>Foundation holds two versions; OMOP holds one fact.</strong>
-<p>Because foundation is append-only and deduplicates on full content, an Observation that moves from <code>preliminary</code> to <code>final</code> exists twice. The L3 step keeps the latest version per <code>resource_id</code> and replaces the earlier OMOP row, so analytics never double-count. This needs a reliable version-ordering field (<code>meta.lastUpdated</code> if foundation keeps it; load timestamp as a weaker fallback).</p></div>
-<div class="card"><strong>Event rows and derived rows behave differently.</strong>
-<p>A Condition maps to one row independently of anything else. <code>OBSERVATION_PERIOD</code> and eras depend on a person's entire history, so when anything about a person changes we recompute that person's derived rows. This is the part that needs the most careful design.</p></div>
-
 <!-- 7 -->
-<h2 id="value">7. Advantages</h2>
+<h2 id="matrix"><span class="n">7</span>FHIR R4 to OMOP mapping matrix</h2>
+<p>Basis: the HL7 FHIR-to-OMOP IG (STU1 ballot; CDM 5.4 target; written against FHIR R5 / IPA / US Core; concepts are version-agnostic) and the CDM v5.4 specification. Rows tagged <span class="tag acc">OUR RULE</span> are not covered by the IG. Filter below.</p>
+<div class="chips" role="group" aria-label="Filter mapping rows">
+  <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+  <button class="chip" type="button" data-f="slice1" aria-pressed="false">Slice 1</button>
+  <button class="chip" type="button" data-f="later" aria-pressed="false">Later</button>
+  <button class="chip" type="button" data-f="out" aria-pressed="false">Out of scope</button>
+  <button class="chip" type="button" data-f="ours" aria-pressed="false">Our own rule</button>
+  <input class="search" id="msearch" type="search" placeholder="Search resource or table" aria-label="Search mapping rows">
+</div>
+<div class="scroll"><table id="mtable">
+<thead><tr><th>FHIR R4 resource</th><th>OMOP target</th><th>Status</th><th>Notes</th></tr></thead>
+<tbody>
+<tr data-s="slice1"><td>Patient</td><td><code>PERSON</code>, <code>LOCATION</code>, <code>DEATH</code></td><td><span class="tag new">Slice 1</span></td><td>Sex at birth to <code>gender_concept_id</code>; race and ethnicity from US Core extensions; <code>deceasedDateTime</code> to DEATH; <code>person_id</code> from the identity crosswalk. Gender identity belongs in OBSERVATION.</td></tr>
+<tr data-s="slice1"><td>(derived)</td><td><code>OBSERVATION_PERIOD</code></td><td><span class="tag new">Slice 1</span></td><td>Not in FHIR. Derived per person (for example first to last event, overlaps merged). Required by OHDSI tools.</td></tr>
+<tr data-s="slice1"><td>Encounter</td><td><code>VISIT_OCCURRENCE</code></td><td><span class="tag new">Slice 1</span></td><td><code>class</code> to <code>visit_concept_id</code>. <code>visit_end_date</code> is mandatory, so define a rule for open encounters. Admit source and discharge disposition to concepts where available.</td></tr>
+<tr data-s="slice1"><td>Condition</td><td><code>CONDITION_OCCURRENCE</code></td><td><span class="tag new">Slice 1</span></td><td>Onset or recorded date to start date; abatement to end date; status to <code>condition_status_concept_id</code>.</td></tr>
+<tr data-s="slice1"><td>Observation (labs, vitals)</td><td><code>MEASUREMENT</code></td><td><span class="tag new">Slice 1</span></td><td><code>value[x]</code> to <code>value_as_number</code> or <code>value_as_concept_id</code>; unit to UCUM concept. <code>component[]</code> (for example blood pressure) splits into one row per component.</td></tr>
+<tr data-s="slice1"><td>Observation (social history, survey, other)</td><td><code>OBSERVATION</code></td><td><span class="tag new">Slice 1</span></td><td>The target table follows the concept's domain, not only the FHIR category.</td></tr>
+<tr data-s="slice1"><td>MedicationStatement</td><td><code>DRUG_EXPOSURE</code></td><td><span class="tag new">Slice 1</span></td><td>IG-mapped.</td></tr>
+<tr data-s="slice1 ours"><td>MedicationRequest</td><td><code>DRUG_EXPOSURE</code></td><td><span class="tag new">Slice 1</span> <span class="tag acc">OUR RULE</span></td><td>Not in the IG. End date is mandatory: derive from dosage and dispense duration, else start date plus days supply. Document the rule (accuracy loss).</td></tr>
+<tr data-s="slice1"><td>Immunization</td><td><code>DRUG_EXPOSURE</code></td><td><span class="tag new">Slice 1</span></td><td>CVX codes.</td></tr>
+<tr data-s="later ours"><td>MedicationAdministration</td><td><code>DRUG_EXPOSURE</code></td><td><span class="tag warn">Later</span> <span class="tag acc">OUR RULE</span></td><td>Exact administration time is lost (information loss).</td></tr>
+<tr data-s="later"><td>Procedure</td><td><code>PROCEDURE_OCCURRENCE</code></td><td><span class="tag warn">Later</span></td><td>CPT, SNOMED and HCPCS via Athena.</td></tr>
+<tr data-s="later"><td>AllergyIntolerance</td><td><code>OBSERVATION</code></td><td><span class="tag warn">Later</span></td><td>IG-mapped.</td></tr>
+<tr data-s="later ours"><td>DiagnosticReport</td><td><code>MEASUREMENT</code> / <code>OBSERVATION</code> / <code>NOTE</code></td><td><span class="tag warn">Later</span> <span class="tag acc">OUR RULE</span></td><td>Results are Observations; report text would be a note.</td></tr>
+<tr data-s="later"><td>Device</td><td><code>DEVICE_EXPOSURE</code></td><td><span class="tag warn">Later</span></td><td></td></tr>
+<tr data-s="later"><td>Specimen</td><td><code>SPECIMEN</code></td><td><span class="tag warn">Later</span></td><td></td></tr>
+<tr data-s="later"><td>Organization</td><td><code>CARE_SITE</code></td><td><span class="tag warn">Later</span></td><td>Cross-file identifier references must be resolved.</td></tr>
+<tr data-s="later"><td>Location</td><td><code>LOCATION</code> / <code>CARE_SITE</code></td><td><span class="tag warn">Later</span></td><td>Patient address also feeds LOCATION.</td></tr>
+<tr data-s="later"><td>Practitioner / PractitionerRole</td><td><code>PROVIDER</code></td><td><span class="tag warn">Later</span></td><td>Specialty to <code>specialty_concept_id</code>.</td></tr>
+<tr data-s="later"><td>Coverage</td><td><code>PAYER_PLAN_PERIOD</code></td><td><span class="tag warn">Later</span></td><td>Received in some file types; confirm reliability first.</td></tr>
+<tr data-s="later"><td>(derived)</td><td><code>CONDITION_ERA</code>, <code>DRUG_ERA</code></td><td><span class="tag warn">Later</span></td><td>Collapsed from occurrences or exposures with a gap rule; rebuilt per affected person.</td></tr>
+<tr data-s="out"><td>CarePlan, CareTeam, Goal</td><td><code>OBSERVATION</code> or none</td><td><span class="tag ctx">Out for now</span></td><td>Low analytic value; decide per use.</td></tr>
+<tr data-s="out"><td>DocumentReference</td><td><code>NOTE</code></td><td><span class="tag ctx">Out for now</span></td><td>Free text and NLP are out of scope.</td></tr>
+<tr data-s="out"><td>Claim, ExplanationOfBenefit</td><td><code>COST</code></td><td><span class="tag ctx">Out</span></td><td>Not received; the IG also excludes claims.</td></tr>
+<tr data-s="out"><td>(derived)</td><td><code>DOSE_ERA</code></td><td><span class="tag ctx">Out</span></td><td>Needs reliable dose data.</td></tr>
+</tbody></table></div>
+<p class="sub" id="mcount"></p>
+
+<h3>Field-level policy</h3>
+<ol class="steps">
+  <li><strong>Always keep</strong> <code>*_source_value</code>, <code>*_source_concept_id</code> and a lineage column to foundation <code>RESOURCE_ID</code>.</li>
+  <li><strong>Never drop an unmapped row.</strong> Give it <code>*_concept_id = 0</code> and report it.</li>
+  <li><strong>Type concept</strong> (<code>*_type_concept_id</code>) is set to the EHR provenance concept for all clinical rows.</li>
+  <li><strong>Dates.</strong> Derive the date from a FHIR datetime; leave <code>*_datetime</code> NULL when the source has no time of day.</li>
+  <li><strong>One OMOP row per FHIR <code>resource_id</code></strong> (latest version wins).</li>
+</ol>
+
+<h3>Known information loss</h3>
+<p>The IG names four kinds of loss. We accept them, document them, and keep the full FHIR in foundation.</p>
 <div class="scroll"><table>
-<tr><th>Advantage</th><th>How it shows up</th></tr>
-<tr><td><strong>Simpler questions, fewer mistakes</strong></td><td>Predictable tables and columns; no JSON parsing; fewer joins</td></tr>
-<tr><td><strong>One meaning per concept</strong></td><td>SNOMED, ICD-10, LOINC, CPT and mapped local codes collapse into one standard concept, so counts are consistent between consumers</td></tr>
-<tr><td><strong>Hierarchies</strong></td><td>Class-level questions (any statin, any diabetes, any inpatient visit) without hand-built code lists</td></tr>
-<tr><td><strong>Better target for AI</strong></td><td>A stable, documented, widely understood schema is much easier for an agent to query correctly than nested JSON. We still add a friendly semantic layer on top so agents do not need to join to <code>CONCEPT</code> each time.</td></tr>
-<tr><td><strong>Ecosystem for free</strong></td><td>Data-quality checks (DQD), characterisation (Achilles), cohort definitions and published phenotypes become available</td></tr>
-<tr><td><strong>Central, measurable standardisation</strong></td><td>Mapping coverage is a metric we can track, instead of every consumer privately fixing codes</td></tr>
-<tr><td><strong>Additive and low-risk</strong></td><td>No change to landing, foundation or RQ; full FHIR remains available and traceable</td></tr>
-<tr><td><strong>Reusable vocabulary</strong></td><td><code>REF_VOCAB</code> can also serve RQ and future products</td></tr>
+<tr><th>Loss type</th><th>Meaning</th><th>Example here</th></tr>
+<tr><td>Fidelity</td><td>A specific source term maps to a broader standard concept</td><td>A local lab code maps to a general measurement concept</td></tr>
+<tr><td>Information</td><td>Source data has no OMOP field</td><td>Exact witness time of a medication administration</td></tr>
+<tr><td>Relationship</td><td>Links between records are split across tables</td><td>Condition <code>evidence</code> or <code>basedOn</code> links are not preserved</td></tr>
+<tr><td>Accuracy</td><td>OMOP needs data the source lacks</td><td>Drug exposure end dates derived rather than observed</td></tr>
 </table></div>
 
 <!-- 8 -->
-<h2 id="limits">8. Limits and risks, stated plainly</h2>
-<div class="grid">
-  <div class="card"><span class="tag warn">BIGGEST RISK</span> <strong>Local codes</strong><p>Athena cannot know what a submitter's local code means. Without a curated mapping those rows get concept 0 and are invisible to concept-based questions. Mitigation: coverage report from day one, prioritise by row volume, a mapping workflow per submitter.</p></div>
-  <div class="card"><span class="tag warn">BY DESIGN</span> <strong>Lossy mapping</strong><p>Not every FHIR field fits. The IG names fidelity, information, relationship and accuracy loss. Mitigation: mapping matrix, source values kept, lineage to foundation.</p></div>
-  <div class="card"><span class="tag warn">OWNERSHIP</span> <strong>Vocabulary is a product</strong><p>Loading, versioning and re-mapping on each release; CPT4 is AMA-licensed. Needs an owner and a licensing decision.</p></div>
-  <div class="card"><span class="tag warn">ENGINEERING</span> <strong>Derived tables and ordering</strong><p>Person-scoped recompute, late-arriving data, stable integer IDs across replays. Sized once we know data volume.</p></div>
-  <div class="card"><span class="tag warn">SCOPE</span> <strong>Guide gaps</strong><p>The IG does not map MedicationRequest, excludes claims, and targets CDM 5.4 and FHIR R5 (we use R4). We need our own rules for medication end dates.</p></div>
-  <div class="card"><span class="tag warn">VALUE</span> <strong>No named consumer yet</strong><p>The AI use case is the consumer. We propose a benchmark: the same questions on foundation vs OMOP, scored for accuracy.</p></div>
-</div>
-<div class="callout warn"><strong>Not a good idea if</strong> consumers need lossless FHIR semantics (keep using foundation), or if nobody can own the vocabulary and mapping work.</div>
+<h2 id="value"><span class="n">8</span>Advantages</h2>
+<div class="scroll"><table>
+<tr><th>Advantage</th><th>How it shows up</th></tr>
+<tr><td><strong>Simpler questions, fewer mistakes</strong></td><td>Predictable tables and columns; no JSON parsing; fewer joins</td></tr>
+<tr><td><strong>One meaning per concept</strong></td><td>SNOMED, ICD-10, LOINC, CPT and mapped local codes collapse into one standard concept, so counts agree between consumers</td></tr>
+<tr><td><strong>Hierarchies</strong></td><td>Class-level questions (any statin, any diabetes, any inpatient visit) without hand-built code lists</td></tr>
+<tr><td><strong>Better target for AI</strong></td><td>A stable, documented, widely understood schema is easier for an agent to query correctly than nested JSON. We still add a friendly semantic layer so agents need not join to <code>CONCEPT</code> each time.</td></tr>
+<tr><td><strong>Ecosystem</strong></td><td>Data-quality checks (DQD), characterisation (Achilles), cohort tooling and published phenotypes become usable</td></tr>
+<tr><td><strong>Central, measurable standardisation</strong></td><td>Mapping coverage is a tracked metric, instead of each consumer privately fixing codes</td></tr>
+<tr><td><strong>Additive and low-risk</strong></td><td>No change to landing, foundation or RQ; full FHIR stays available and traceable</td></tr>
+<tr><td><strong>Reusable vocabulary</strong></td><td><code>REF_VOCAB</code> can serve RQ and future products</td></tr>
+</table></div>
 
 <!-- 9 -->
-<h2 id="plan">9. Plan</h2>
+<h2 id="risks"><span class="n">9</span>Limits and risks, stated plainly</h2>
 <div class="scroll"><table>
-<tr><th>Phase</th><th>Scope</th><th>Exit criteria</th></tr>
-<tr><td>0 Foundations</td><td>Athena access and load into <code>REF_VOCAB</code>; schemas; crosswalks; coverage report skeleton</td><td>Vocabulary queryable end to end</td></tr>
-<tr><td>1 First slice</td><td>PERSON, OBSERVATION_PERIOD, VISIT, CONDITION, MEASUREMENT, DRUG (incl. MedicationRequest rule and immunizations)</td><td>Core benchmark questions answerable; coverage published; counts reconcile to foundation</td></tr>
-<tr><td>2 Broaden</td><td>PROCEDURE, OBSERVATION, DEATH, LOCATION, CARE_SITE, PROVIDER, eras; local code workflow</td><td>Full benchmark run; DQD tracked</td></tr>
-<tr><td>3 Consume</td><td>Semantic view and agent on OMOP; PAYER_PLAN_PERIOD from Coverage</td><td>FHIR vs OMOP comparison presented</td></tr>
+<tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr>
+<tr><td><span class="tag bad">HIGH</span> <strong>Local codes</strong></td><td>Athena cannot know a submitter's local code. Unmapped rows get concept 0 and are invisible to concept-based questions.</td><td>Coverage report from day one; prioritise by row volume; a mapping workflow per submitter with a named owner</td></tr>
+<tr><td><span class="tag warn">MED</span> <strong>Vocabulary ownership</strong></td><td>Loading, versioning and re-mapping on each Athena release; CPT4 is AMA-licensed</td><td>Name an owner; confirm licensing; record vocabulary version in <code>CDM_SOURCE</code>; regression-test mappings on refresh</td></tr>
+<tr><td><span class="tag warn">MED</span> <strong>Lossy mapping</strong></td><td>Not every FHIR field fits OMOP</td><td>Mapping matrix; source values and lineage retained; present OMOP as complementary</td></tr>
+<tr><td><span class="tag warn">MED</span> <strong>Duplicate or stale facts</strong></td><td>Append-only foundation holds several versions of one resource</td><td>Latest-version step; replace OMOP row by <code>resource_id</code>; confirm version-ordering field</td></tr>
+<tr><td><span class="tag warn">MED</span> <strong>Derived-table cost</strong></td><td>Observation period and eras need whole-history logic</td><td>Person-scoped incremental rebuild; size from data volume</td></tr>
+<tr><td><span class="tag warn">MED</span> <strong>Scope gaps in the IG</strong></td><td>No MedicationRequest mapping; claims excluded; targets CDM 5.4 and FHIR R5 while we use R4</td><td>Own documented rules; cross-version check of the IG mappings</td></tr>
+<tr><td><span class="tag warn">MED</span> <strong>No named consumer yet</strong></td><td>Risk of building without adoption</td><td>The AI use case is the consumer; the benchmark below is the evidence</td></tr>
 </table></div>
-<p><strong>Success measures:</strong> agent accuracy on the benchmark (foundation vs OMOP), mapping coverage by domain, data-quality pass rate, and reduction in joins per question.</p>
+<div class="callout warn"><strong>Not a good idea if</strong> consumers need lossless FHIR semantics (keep using foundation), or if nobody can own the vocabulary and mapping work.</div>
 
 <!-- 10 -->
-<h2 id="ask">10. For discussion</h2>
-<ul>
-  <li>Does foundation retain <code>meta.lastUpdated</code> / <code>meta.versionId</code> for version ordering?</li>
-  <li>How many submitters send local codes, and who would own their mapping?</li>
-  <li>Who owns Athena access, vocabulary refreshes, and the CPT4 licensing decision?</li>
-  <li>Production resource mix, especially which medication resource arrives (the IG covers only MedicationStatement).</li>
-  <li>Data volume and daily change rate, to size the person-level rebuild.</li>
-  <li>Who are the first consumers, and which questions matter most?</li>
-  <li>Confirm CDM v5.4 as the target version.</li>
-</ul>
+<h2 id="proof"><span class="n">10</span>How we prove the value</h2>
+<p>Run the same questions through an AI agent twice, once over foundation and once over OMOP, and compare accuracy, SQL complexity and human corrections.</p>
+<ol class="steps">
+  <li><strong>Pick 20 to 30 questions</strong> (the starter set is below; add real stakeholder questions).</li>
+  <li><strong>Write a reference SQL answer</strong> on OMOP for each, checked against a hand-verified sample.</li>
+  <li><strong>Run the agent</strong> over each model with only the semantic definitions each model provides.</li>
+  <li><strong>Score</strong> correct, partially correct or wrong, plus latency and number of joins.</li>
+  <li><strong>Separate mapping findings from modelling findings.</strong> A wrong answer caused by an unmapped local code is a mapping gap, not an OMOP failure.</li>
+</ol>
+<div class="scroll"><table>
+<tr><th>#</th><th>Question</th><th>Domains</th><th>Why FHIR is hard</th></tr>
+<tr><td>1</td><td>Patients aged 20 to 30 with HbA1c above 9% in the last 12 months</td><td>Person, Measurement</td><td>Several codes and systems, units, <code>valueQuantity</code>, age join</td></tr>
+<tr><td>2</td><td>Patients who started metformin after a type 2 diabetes diagnosis</td><td>Condition, Drug</td><td>Medication as reference, code or text; ordering of two event types</td></tr>
+<tr><td>3</td><td>Patients with any statin exposure in the last year</td><td>Drug</td><td>Brand and generic codes; needs ingredient hierarchy</td></tr>
+<tr><td>4</td><td>Average outpatient visits per year for hypertension, by age band</td><td>Person, Visit, Condition</td><td>Encounter class codes; cohort across tables</td></tr>
+<tr><td>5</td><td>Top 10 procedures by distinct patient count</td><td>Procedure</td><td>CPT, SNOMED and local procedure codes mixed</td></tr>
+<tr><td>6</td><td>Median days from first diabetes diagnosis to first inpatient admission</td><td>Condition, Visit</td><td>Event ordering; visit type normalisation</td></tr>
+<tr><td>7</td><td>30-day readmission after an inpatient visit with heart failure</td><td>Visit, Condition</td><td>Self-join on visits; diagnosis hierarchy</td></tr>
+<tr><td>8</td><td>Share of patients with a documented smoking status</td><td>Observation</td><td>Value codes vary by submitter</td></tr>
+<tr><td>9</td><td>Systolic blood pressure distribution for patients over 65</td><td>Measurement</td><td>Blood pressure is a panel with components</td></tr>
+<tr><td>10</td><td>Patients with HbA1c above 8% and a statin prescription</td><td>Measurement, Drug</td><td>Two domains; unit and code normalisation</td></tr>
+<tr><td>11</td><td>New asthma diagnoses per quarter, by sex</td><td>Condition, Person</td><td>Condition hierarchy; onset versus recorded date</td></tr>
+<tr><td>12</td><td>Influenza vaccination coverage by age group</td><td>Drug (immunization)</td><td>CVX versus local vaccine codes</td></tr>
+<tr><td>13</td><td>Patients observed for at least 2 years with no emergency visit</td><td>Observation period, Visit</td><td>Requires a defined observation period</td></tr>
+<tr><td>14</td><td>Care sites seeing the most patients with chronic kidney disease</td><td>Condition, Visit, Care site</td><td>Organization reference resolution</td></tr>
+<tr><td>15</td><td>Patients whose most recent lab result for a code is abnormal</td><td>Measurement</td><td>Latest-result logic; reference ranges</td></tr>
+</table></div>
+<h3>Metrics to report</h3>
+<div class="kpi">
+  <div><b>Agent accuracy</b><span class="sub">share fully correct, foundation vs OMOP</span></div>
+  <div><b>Query complexity</b><span class="sub">median joins and SQL length per question</span></div>
+  <div><b>Mapping coverage</b><span class="sub">percent of rows with concept_id not 0, by domain and submitter</span></div>
+  <div><b>Blocked by mapping</b><span class="sub">share of wrong answers caused by unmapped codes</span></div>
+</div>
 
-<footer>
-  Sources: OMOP CDM documentation (ohdsi.github.io/CommonDataModel), OHDSI "The Common Data Model", HL7 FHIR-to-OMOP IG (build.fhir.org/ig/HL7/fhir-omop-ig, STU1 ballot, trial-use). Concept IDs are illustrative and must be verified in Athena. See the other documents in this folder for the mapping matrix, benchmark questions and open questions.
-</footer>
+<!-- 11 -->
+<h2 id="plan"><span class="n">11</span>Plan</h2>
+<figure>
+<svg viewBox="0 0 900 190" role="img" aria-label="Four phases from foundations to consume">
+  <defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <rect class="box ctx" x="10" y="30" width="205" height="130" rx="10"/>
+  <text x="112" y="55" text-anchor="middle" font-weight="700" font-size="14">0 Foundations</text>
+  <text x="112" y="78" text-anchor="middle" class="sm">Athena into REF_VOCAB</text>
+  <text x="112" y="94" text-anchor="middle" class="sm">schemas · crosswalks</text>
+  <text x="112" y="110" text-anchor="middle" class="sm">CDM_SOURCE · coverage skeleton</text>
+  <rect class="box new" x="235" y="30" width="205" height="130" rx="10"/>
+  <text x="337" y="55" text-anchor="middle" font-weight="700" font-size="14">1 First slice</text>
+  <text x="337" y="78" text-anchor="middle" class="sm">PERSON · OBS. PERIOD</text>
+  <text x="337" y="94" text-anchor="middle" class="sm">VISIT · CONDITION</text>
+  <text x="337" y="110" text-anchor="middle" class="sm">MEASUREMENT · DRUG</text>
+  <text x="337" y="130" text-anchor="middle" class="sm">version resolution · tasks</text>
+  <rect class="box new" x="460" y="30" width="205" height="130" rx="10"/>
+  <text x="562" y="55" text-anchor="middle" font-weight="700" font-size="14">2 Broaden</text>
+  <text x="562" y="78" text-anchor="middle" class="sm">PROCEDURE · OBSERVATION</text>
+  <text x="562" y="94" text-anchor="middle" class="sm">DEATH · LOCATION</text>
+  <text x="562" y="110" text-anchor="middle" class="sm">CARE_SITE · PROVIDER</text>
+  <text x="562" y="130" text-anchor="middle" class="sm">eras · local code workflow</text>
+  <rect class="box ok" x="685" y="30" width="205" height="130" rx="10"/>
+  <text x="787" y="55" text-anchor="middle" font-weight="700" font-size="14">3 Consume</text>
+  <text x="787" y="78" text-anchor="middle" class="sm">semantic view + agent on OMOP</text>
+  <text x="787" y="94" text-anchor="middle" class="sm">PAYER_PLAN_PERIOD</text>
+  <text x="787" y="110" text-anchor="middle" class="sm">FHIR vs OMOP benchmark readout</text>
+  <path class="arrow" d="M215 95 L235 95" marker-end="url(#a6)"/>
+  <path class="arrow" d="M440 95 L460 95" marker-end="url(#a6)"/>
+  <path class="arrow" d="M665 95 L685 95" marker-end="url(#a6)"/>
+</svg>
+</figure>
+<div class="scroll"><table>
+<tr><th>Phase</th><th>Exit criteria</th></tr>
+<tr><td>0 Foundations</td><td>Vocabulary queryable end to end; a code can be looked up from foundation to concept</td></tr>
+<tr><td>1 First slice</td><td>Core benchmark questions (1 to 4, 6, 9, 10) answerable; coverage report published; row counts reconcile to foundation</td></tr>
+<tr><td>2 Broaden</td><td>Full benchmark run; data-quality checks (DQD) executed and tracked</td></tr>
+<tr><td>3 Consume</td><td>FHIR vs OMOP benchmark comparison presented; consumer documentation published</td></tr>
+</table></div>
+<h3>Prerequisites before build</h3>
+<ol class="steps">
+  <li><strong>Athena access.</strong> Register (free), choose vocabularies (SNOMED, ICD10CM, LOINC, RxNorm, CVX, UCUM, NDC, CPT4 if licensed, plus domain and class reference data) and download a release.</li>
+  <li><strong>CPT4 licensing.</strong> CPT is AMA-licensed; the Athena download fetches it with a UMLS licence key. Decide whether to proceed without it initially.</li>
+  <li><strong>Person-key contract.</strong> Agree the output of the existing identity logic (stable, integer-friendly key).</li>
+  <li><strong>Baseline run.</strong> Pick benchmark questions and run them on foundation first.</li>
+</ol>
+
+<!-- 12 -->
+<h2 id="decisions"><span class="n">12</span>Decisions and open questions</h2>
+<h3>Already decided</h3>
+<div class="scroll"><table>
+<tr><th>Topic</th><th>Decision</th></tr>
+<tr><td>Role of OMOP</td><td>An additional L3 data product; FHIR foundation remains the base</td></tr>
+<tr><td>Source</td><td>FOUNDATION tables only</td></tr>
+<tr><td>Refresh</td><td>Streams and tasks (not dynamic tables)</td></tr>
+<tr><td>FHIR version</td><td>R4</td></tr>
+<tr><td>Claims and EOB</td><td>Not received; out of scope</td></tr>
+<tr><td>Foundation behaviour</td><td>Append-only; the same resource can appear twice with different content, so L3 resolves the latest version</td></tr>
+<tr><td>Person identity</td><td>Existing logic identifies a person; L3 consumes it as a crosswalk</td></tr>
+<tr><td>CDM version (proposed)</td><td>5.4: what the FHIR IG targets, and tool support for 5.5 features is still in progress per the CDM site</td></tr>
+</table></div>
+<h3>Open questions</h3>
+<div class="scroll"><table>
+<tr><th>#</th><th>Question</th><th>Why it matters</th><th>Owner</th></tr>
+<tr><td>1</td><td>Does foundation keep <code>meta.lastUpdated</code> / <code>meta.versionId</code>?</td><td>Version ordering; load timestamp only reflects arrival order</td><td>Data engineering</td></tr>
+<tr><td>2</td><td>How many submitters send local codes, and who maps them?</td><td>Sets achievable coverage; largest effort</td><td>Product / clinical data</td></tr>
+<tr><td>3</td><td>Form and stability of the person key</td><td>Becomes <code>PERSON.person_id</code>; must not change on replay</td><td>Data engineering</td></tr>
+<tr><td>4</td><td>Which resource types and which medication resource arrive in production?</td><td>The IG maps only MedicationStatement</td><td>Data engineering</td></tr>
+<tr><td>5</td><td>Data volume and daily change rate</td><td>Sizes the person-scoped rebuild</td><td>Data engineering</td></tr>
+<tr><td>6</td><td>Athena access and vocabulary scope</td><td>Prerequisite for any concept mapping</td><td>Platform</td></tr>
+<tr><td>7</td><td>CPT4 licensing</td><td>AMA-licensed content</td><td>Legal / compliance</td></tr>
+<tr><td>8</td><td>Who owns vocabulary refreshes and re-mapping?</td><td>Vocabulary is a living dataset</td><td>Platform</td></tr>
+<tr><td>9</td><td>Who are the first named consumers?</td><td>Drives priorities and the benchmark set</td><td>Product</td></tr>
+<tr><td>10</td><td>Is Coverage data reliable enough for <code>PAYER_PLAN_PERIOD</code>?</td><td>Phase 3 candidate</td><td>Product</td></tr>
+</table></div>
+
+<!-- 13 -->
+<h2 id="glossary"><span class="n">13</span>Glossary and sources</h2>
+<details><summary>Glossary</summary>
+<div class="scroll"><table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>OMOP CDM</td><td>Observational Medical Outcomes Partnership Common Data Model, an open community standard for observational health data</td></tr>
+<tr><td>OHDSI</td><td>The open community that maintains OMOP, its vocabularies and tools</td></tr>
+<tr><td>Athena</td><td>OHDSI's vocabulary download service (athena.ohdsi.org)</td></tr>
+<tr><td>Concept</td><td>A standardised term with an integer ID and a domain</td></tr>
+<tr><td>Standard concept</td><td>The preferred concept for a meaning; analytics use these</td></tr>
+<tr><td>Source code / source concept</td><td>The original code from the data, kept for lineage</td></tr>
+<tr><td>Domain</td><td>The kind of fact a concept represents (Condition, Drug, Measurement and so on), deciding the target table</td></tr>
+<tr><td>Concept ancestor</td><td>Pre-computed hierarchy used for "any member of this class" questions</td></tr>
+<tr><td>Type concept</td><td>Records where a row came from (EHR, claim, registry)</td></tr>
+<tr><td>Observation period</td><td>Span during which a person's events are expected to be captured; derived</td></tr>
+<tr><td>Era</td><td>A derived continuous episode of a condition or drug exposure</td></tr>
+<tr><td>DQD / Achilles / ATLAS</td><td>OHDSI tools for data quality, characterisation and cohort definition</td></tr>
+<tr><td>Foundation / L3</td><td>Our deduplicated semi-flat FHIR layer, and the consumer data product layer built from it</td></tr>
+<tr><td>Lineage column</td><td>An OMOP column holding the foundation <code>RESOURCE_ID</code> a row came from</td></tr>
+</table></div></details>
+<details><summary>Sources</summary>
+<ul>
+  <li>OMOP CDM documentation: <a href="https://ohdsi.github.io/CommonDataModel/">ohdsi.github.io/CommonDataModel</a></li>
+  <li>OHDSI, The Common Data Model: <a href="https://www.ohdsi.org/data-standardization/the-common-data-model/">ohdsi.org/data-standardization/the-common-data-model</a></li>
+  <li>HL7 FHIR-to-OMOP Implementation Guide (STU1 ballot, trial-use, maturity 2): <a href="https://build.fhir.org/ig/HL7/fhir-omop-ig/en/">build.fhir.org/ig/HL7/fhir-omop-ig</a></li>
+</ul></details>
+
+<footer>Concept IDs are illustrative and must be verified in Athena. Companion Markdown documents in this folder hold the same architecture, mapping matrix, benchmark and open questions in plain-text form.</footer>
 
 </div>
+
+<script>
+(function(){
+  // theme toggle (per-viewer convenience only)
+  var root=document.documentElement, btn=document.getElementById('theme');
+  btn.addEventListener('click',function(){
+    var dark = root.getAttribute('data-theme')==='dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+  // mapping matrix filter
+  var chips=document.querySelectorAll('.chip'), rows=document.querySelectorAll('#mtable tbody tr');
+  var search=document.getElementById('msearch'), count=document.getElementById('mcount');
+  var current='all';
+  function apply(){
+    var q=(search.value||'').toLowerCase(), shown=0;
+    rows.forEach(function(r){
+      var okF = current==='all' || (' '+r.getAttribute('data-s')+' ').indexOf(' '+current+' ')>-1;
+      var okQ = !q || r.textContent.toLowerCase().indexOf(q)>-1;
+      var show = okF && okQ; r.style.display = show ? '' : 'none'; if(show) shown++;
+    });
+    count.textContent = 'Showing ' + shown + ' of ' + rows.length + ' mapping rows.';
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      current=c.getAttribute('data-f');
+      chips.forEach(function(x){x.setAttribute('aria-pressed', x===c ? 'true':'false');});
+      apply();
+    });
+  });
+  search.addEventListener('input',apply);
+  apply();
+  // open all details when printing
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+})();
+</script>
 </body>
 </html>
